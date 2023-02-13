@@ -1,0 +1,39 @@
+version: '3.1'
+
+services:
+
+  mysql:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    volumes:
+      - 'mi-mysql-vol:/app/data'
+    networks:
+            mi-mysql-red:
+                ipv4_address: 172.32.0.4
+  dashboard:
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    volumes:
+      - 'mi-dashboard-vol:/app/data'
+    networks:
+            mi-mysql-red:
+                ipv4_address: 172.32.0.5
+    environment:
+      - PMA_ARBITRARY=1
+
+volumes:
+  mi-mysql-vol:
+    driver: local
+  mi-dashboard-vol:
+    driver: local
+networks:
+    mi-mysql-red:
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 172.32.0.0/16
