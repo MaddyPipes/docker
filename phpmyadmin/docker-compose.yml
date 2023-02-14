@@ -8,7 +8,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: example
     volumes:
-      - 'mi-mysql-vol:/app/data'
+      - 'mi-mysql-vol:/var/lib/mysql'
     networks:
             mi-mysql-red:
                 ipv4_address: 172.32.0.4
@@ -18,8 +18,6 @@ services:
       - 8080:80
     depends_on:
       - mysql
-    volumes:
-      - 'mi-dashboard-vol:/app/data'
     networks:
             mi-mysql-red:
                 ipv4_address: 172.32.0.5
