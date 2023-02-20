@@ -1,7 +1,6 @@
 <?php
 
-    echo "Hola mundo";
-    echo '/n';
+    echo "Hola mundo <br>";
     echo "Adiós mundo";
 
 ?>
