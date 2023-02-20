@@ -12,13 +12,13 @@ services:
     networks:
             mongo-node-net:
                 ipv4_address: 172.40.0.10
-    ports:
-      - '27018:8080'
     container_name: mi-mongo
+    ports:
+      - '27017:27017'
   nodejs:
     image: mi-nodejs
     ports:
-      - '8080:8080'
+      - '8080:443'
     networks:
             mongo-node-net:
                 ipv4_address: 172.40.0.11
@@ -28,7 +28,7 @@ services:
   nginx:
     image: nginx
     ports:
-      - '80:8080'
+      - '8080:80'
     networks:
             node-nginx-net:
                 ipv4_address: 172.80.0.11
