@@ -1,0 +1,4 @@
+FROM node:14
+COPY . /var/app
+EXPOSE 8080
+RUN ["npm", "start"]
