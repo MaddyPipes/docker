@@ -1,5 +1,5 @@
 FROM node:14
+RUN npm install
 COPY . /var/app
 EXPOSE 8080
-RUN npm install
 CMD ["npm", "start"]
